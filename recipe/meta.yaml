@@ -20,10 +20,12 @@ requirements:
   host:
     - python
     - pip
-    # - poetry >=1.0.0b2
+    - setuptools
+    - wheel
+    - poetry-core
   run:
     - python
-    - clikit >=0.6.0,<0.7.0
+    - pytz >=2015.7
 
 test:
   imports:
