@@ -9,7 +9,7 @@ source:
   sha256: eb4b2e1f3063c11085cebe489a6e9124163c226575a3c3be69b2e51af4a15ec5
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script:
     # we cannot use poetry to install cleo b/c poetry depends on cleo
