@@ -13,7 +13,7 @@ build:
   skip: true  # [py<37]
   script:
     # we cannot use poetry to install cleo b/c poetry depends on cleo
-    - rm -f pyproject.toml
+    # - rm -f pyproject.toml
     - {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
