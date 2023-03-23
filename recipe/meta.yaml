@@ -1,4 +1,4 @@
-{% set version = "0.8.1" %}
+{% set version = "2.0.1" %}
 
 package:
   name: cleo
@@ -6,32 +6,33 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cleo/cleo-{{ version }}.tar.gz
-  sha256: 3d0e22d30117851b45970b6c14aca4ab0b18b1b53c8af57bed13208147e4069f
+  sha256: eb4b2e1f3063c11085cebe489a6e9124163c226575a3c3be69b2e51af4a15ec5
 
 build:
-  number: 1
-  noarch: python
+  number: 0
+  skip: true  # [py<37]
   script:
-    # we cannot use poetry to install cleo b/c poetry depends on cleo
-    - rm -f pyproject.toml
-    - {{ PYTHON }} -m pip install . -vv
+    - {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
   host:
     - python
     - pip
-    # - poetry >=1.0.0b2
+    - setuptools
+    - wheel
+    - poetry-core 1.5.2
   run:
     - python
-    - clikit >=0.6.0,<0.7.0
+    - crashtest >=0.4.1,<0.5.0
+    - rapidfuzz >=2.2.0,<3.0.0
 
 test:
   imports:
     - cleo
     - cleo.commands
     - cleo.commands.completions
-    - cleo.config
     - cleo.io
+    - cleo.loaders
     - cleo.testers
   commands:
     - pip check
@@ -46,6 +47,7 @@ about:
   summary: Cleo allows you to create beautiful and testable command-line interfaces.
   description: Cleo allows you to create beautiful and testable command-line interfaces.
   dev_url: https://github.com/sdispater/cleo
+  doc_url: https://cleo.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
