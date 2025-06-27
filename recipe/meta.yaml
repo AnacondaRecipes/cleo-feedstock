@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/cleo/cleo-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/c/cleo/cleo-{{ version }}.tar.gz
   sha256: 0b2c880b5d13660a7ea651001fb4acb527696c01f15c9ee650f377aa543fd523
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<37]
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
